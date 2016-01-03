@@ -1,0 +1,62 @@
+/* Andrew Ribeiro 
+// http://www.AndrewRib.com
+// January 2, 2016 */
+/*******************************************************
+** This code was created by Andrew Ribeiro whom        *
+** retains the rights to all the material presented in *
+** this document, unless stated otherwise. The usage   *
+** of this code is granded with no liability to the    *
+** creator of this material.                           *
+********************************************************/
+
+@font-face {
+	font-family:'ColorsOfAutumn';
+	src:url("ColorsOfAutumn.ttf");
+}
+
+.customFont
+{
+	font-family: 'ColorsOfAutumn';
+}
+
+.dbFetch
+{
+	width:200px;
+	overflow:hidden;
+	word-break:break-strict;
+	line-height:10px;
+	height:20px;
+	padding:6px 6px 6px 6px;
+	background-color:#FFF;
+	border:thin #CCC solid;
+	font-size:10px;
+	float:left;
+	display:block;
+}
+
+body
+{
+	margin: 0px 0px 0px 0px;
+}
+.navButton
+{
+	padding:6px 6px 6px 6px; 
+	border:medium solid #000;
+	background-color:#999;
+	width:80px;
+	opacity:0.4;
+	text-align:center;
+	font-variant:small-caps;
+	font-size:24px;
+}
+#gabePanels
+{
+	position:fixed; width:105%; height:100%; top:0px; left:0px; z-index:-400; opacity:0.5; overflow:hidden; padding:0px 0px 0px 0px;
+}
+.gabePanel
+{
+	width:50px;
+	height:50px;
+	float:left;
+	background-color:#3F0;
+}

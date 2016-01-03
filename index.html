@@ -1,75 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+// Andrew Ribeiro 
+// http://www.AndrewRib.com
+// January 2, 2016
+/*******************************************************
+** This code was created by Andrew Ribeiro whom        *
+** retains the rights to all the material presented in *
+** this document, unless stated otherwise. The usage   *
+** of this code is granded with no liability to the    *
+** creator of this material.                           *
+********************************************************/
+-->
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Working on it</title>
+
+<!-- Includes -->
 <script src="jquery-2.1.4.min.js" type="application/javascript" language="javascript"></script>
-
-<style type="text/css">
-/***********************************************
-**
-** Sup. Andrew Rib here. Enjoy. 
-**
-**
-**
-************************************************/
-
-@font-face {
-	font-family:'ColorsOfAutumn';
-	src:url("ColorsOfAutumn.ttf");
-}
-
-.customFont
-{
-	font-family: 'ColorsOfAutumn';
-}
-
-.dbFetch
-{
-	width:200px;
-	overflow:ellipsis;
-	word-break:break-all;
-	line-height:10px;
-	height:20px;
-	padding:6px 6px 6px 6px;
-	background-color:#FFF;
-	border:thin #CCC solid;
-	font-size:10px;
-	float:left;
-	display:block;
-}
-
-body
-{
-	margin: 0px 0px 0px 0px;
-}
-.navButton
-{
-	padding:6px 6px 6px 6px; 
-	border:medium solid #000;
-	background-color:#999;
-	width:80px;
-	opacity:0.6;
-	text-align:center;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="guestBook.css">
+<!-------------->
 
 </head>
 
-<body style="background-color:#000;">
-<audio id="click1" src="sound/click1.wav"></audio>
-
-<!--
-<h3 style="color:#FFF; font-size:50pt;">I'm working on it...</h3>
--->
-
-<!--<div style="position:absolute;top:125px; ;left:50%; transform:translate(-50%, 0%);  width:600; height:540; pointer-events: none;"><img style="pointer-events:none;" src="cover.fw.png" width="600" height="540" /></div>-->
-
-<div style="margin: 8px 8px 8px 8px;">
-	<div class="navButton">portfolio</div>
+<!-- Top nav bar -->
+<div style="margin: 8px 8px 8px 8px; margin-bottom:-1px;">
+	<div class="navButton">have a great day</div>
 </div>
 
+<div id="bigDisplay" style="font-size:30pt; margin-right:10px; margin-bottom:10px;text-shadow: 0 0 0.2em #0CF, 0 0 0.2em #0CF; position: fixed; top:10px; left:10px; text-align:center; background-color:#00C;opacity:0.8;"></div>
+<!-- Title --->
 <div style="text-align:center;">
 	<h3 class="customFont" style="color:#FFF; font-size:50pt; margin-bottom:10px;text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87;">Leave Your Mark</h3>
 </div>
@@ -93,7 +54,8 @@ body
 <!-- I just got a mechanical keyboard. I gladly typed all this simply because it is so enjoyable. -->
 
 <div style="width:600px; margin:0 auto; clear:left;">
-	<!-- Left bar -->
+
+	<!-- Left DIV LED bar -->
     <div style="background-color:#F90; float:left; width:50px; height:227px;">
         <div id="box36" style="background-color:#C6C; width:50px; height:21px;"></div>
         <div id="box35" style="background-color:#C99;width:50px; height:21px; "></div>
@@ -108,13 +70,14 @@ body
         <div id="box26" style="background-color:#C99;width:50px; height:20px; "></div>
     </div>
 
+	<!-- Message input -->
     <div style="margin:0 auto; width:500px; float:left;">
         <textarea id="textIn" onchange="playClickSound()" onkeydown="playClickSound()" onfocus="goCrazy()" placeholder="Enter positive words here  ...........(140 chars)" 
-            style="width:494px; height: 200px;margin:0 auto; font-size:32px;" maxlength="140"></textarea>
+            style="width:494px; height: 200px;margin:0 auto; font-size:32px; min" maxlength="140"></textarea>
     </div>
     
     
-	<!-- Right Bar -->
+	<!-- Right DIV LED Bar -->
     <div style="background-color:#F90; float:left; width:50px; height:200px;">
         <div id="box13" style="background-color:#C6C; width:50px; height:21px;"></div>
         <div id="box14" style="background-color:#C99;width:50px; height:21px; "></div>
@@ -130,7 +93,7 @@ body
     </div>
 
 
-    <!-- Bottom Bar -->
+    <!-- Bottom DIV LED Bar -->
     <div style="margin:0 auto; width:500px; float:left;" >
     
         <div style="display:table-row; width:500px;">
@@ -150,227 +113,20 @@ body
 </div>
 
 <br />
-
+<!-- Wall of messages on the gueatbook -->
 <div id="dbFetches" style="width: 100%; text-align:center; align:center; clear:both; padding-top:10px; opacity:60%; margin-bottom:10px;" align="center" >
 </div>
 
-<br /><br /><br />
-
+<div id="gabePanels"></div>
+<div style="position:fixed; background-image:url(gabe.png); background-repeat:repeat; width:100%; height:100%; background-size: 50px 50px; top:0px; z-index:-500;"></div>
+<!-- Fixed stretched background image -->
 <div style="position:fixed; top:0px; left:0px; width:100%;height:100%; z-index:-1000;"><img src="bg.jpg" style="width:100%;height:100%;" /></div>
 
-<script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript" src="guestBook.js"></script>
 
-// A lot of function side effects here. Stay clear kids. 
-// This was the most logical way for me to do this task-- or at least most natural for me. 
+<!--
+<iframe style="visibility:hidden; position:absolute;" width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/206605422&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>!-->
 
-var baseIncrementCounter = 0;
-var areWeCrazy = false;
-var frequency = .1;
-
-var counterIncrementFunction = function( counterValue ){
-	return Math.log( counterValue );
-}
-
-var maxBaseIncrement = 27;
-
-// For fluid motion back and forth. 
-var boolGoingDown = false; // Are we incrementing or decrementing the base counter. 
-
-
-/***** Color Sequences ******/
-function funckyMultiColorWalk( i)
-{
-	var red   =  Math.floor(Math.sin( (frequency * i )  + baseIncrementCounter + 4  ) * 127 + 128);
-	var green =  Math.floor(Math.sin((frequency  * i )  + baseIncrementCounter + 2   ) * 127 + 128);
-	var blue  = Math.floor( Math.sin((frequency  * i )   + baseIncrementCounter + 0 ) * 127 + 128);
-	
-	//alert( "rgb("+red+","+green+","+blue+")" );
-	dbFetches[i].style.backgroundColor = "rgb("+(red-100)+","+(green-100)+","+(blue-100)+")";	
-	dbFetches[i].style.boxShadow = -4+"px "+1+"px "+50+"px " + "rgb("+(red-100)+","+(green-100)+","+(blue-100)+")";
-}
-
-function coolBlend( i ,  baseIncrementCounter)
-{
-	var red   = Math.floor(Math.sin( (frequency * i ) + baseIncrementCounter + i) * 127 + 128);
-	var green = Math.floor(Math.sin( (frequency * i ) + baseIncrementCounter ) * 127 + 128);
-	var blue  = Math.floor(Math.sin( (frequency * i ) + baseIncrementCounter) * 127 + 128);
-	
-	//alert( "rgb("+red+","+green+","+blue+")" );
-	document.getElementById("box"+i).style.backgroundColor = "rgb("+(red-100)+","+(green-100)+","+(blue-100)+")";	
-	document.getElementById("box"+i).style.boxShadow = -4+"px "+1+"px "+50+"px " + "rgb("+(red-100)+","+(green-100)+","+(blue-100)+")";
-}
-/**************************************/
-
-function changeUpBoxColor( increment )
-{
-	var incrementCounter = baseIncrementCounter;
-	
-	for( var i = 1; i <= 36; i++ )
-	{
-		//document.getElementById("box"+i).style.backgroundColor = "rgb("+incrementCounter+","+incrementCounter+","+incrementCounter+")";
-		//var red   =  Math.floor(Math.sin( (frequency + incrementCounter ) * i + 0  ) * 127 + 128);
-		//funckyMultiColorWalk( i );
-		coolBlend(i,baseIncrementCounter);
-	}
-}
-
-function changeUpTextColors()
-{
-	for( var i = 0; i < dbFetches.length; i++ )
-	{
-		//document.getElementById("box"+i).style.backgroundColor = "rgb("+incrementCounter+","+incrementCounter+","+incrementCounter+")";
-		//var red   =  Math.floor(Math.sin( (frequency + incrementCounter ) * i + 0  ) * 127 + 128);
-		//funckyMultiColorWalk( i );
-		funckyMultiColorWalk( i , textColorBasicIncrementCounter  );
-	}
-	
-	textColorBasicIncrementCounter += .5;
-}
-
-function rand(low,high)
-{
-	// 255 is max rbg value. rand( 0, 255 );
-	return Math.floor((Math.random() * high) + low);
-}
-
-function randomChangeUpColor()
-{
-	for( var i = 1; i <= 36; i++ )
-	{
-		document.getElementById("box"+i).style.backgroundColor = "rgb("+rand(50,110)+","+0+","+0+")";
-	}
-}
-
-function goCrazy()
-{
-	if( !areWeCrazy )
-	{
-		clearInterval(defaultColorChangeHandle);
-		randomChangeUpColor();
-		setInterval(randomChangeUpColor, 50);
-		areWeCrazy = true;
-	}
-}
-
-function callChangeUpColor()
-{
-	
-	changeUpBoxColor( baseIncrementCounter );
-	baseIncrementCounter += .12;
-	/*
-	if(boolGoingDown)
-	{
-		baseIncrementCounter -= .1;
-	}
-	else
-	{
-		baseIncrementCounter += .1;
-	}
-	
-	if( baseIncrementCounter > maxBaseIncrement )
-	{
-		// Let's start decrementing. 
-		boolGoingDown = true;
-		baseIncrementCounter--;
-		//alert("Down!");
-	}
-	else if(baseIncrementCounter < 0 )
-	{
-		boolGoingDown = false; 
-		baseIncrementCounter = 0;
-		//alert("Up!");
-	}*/
-
-}
-
-var preloadedSoundPlayers = Array();
-function preloadSounds()
-{
-	
-}
-
-function playClickSound()
-{
-	var tmpPlayer = document.createElement("audio");
-	tmpPlayer.setAttribute("src","sound/click"+rand(1,4)+".wav");
-	tmpPlayer.play();
-	//document.getElementById("click1").play();
-}
-
-function submitPost()
-{
-	$.ajax
-	(
-		{
-		  method: "POST",
-		  url: "process.php",
-		  data: { action: "setTruth", text: (document.getElementById("textIn").value.replace(/'/g,"\"") )}
-		}
-	).done(function( msg )
-		{
-		  document.location = document.location;
-		}
-	);
-}
-
-var avedAjaxResult;
-var dbFetches = new Array();
-var textColorBasicIncrementCounter = 0;
-
-function getTruths()
-{
-	// 200 + 13 offset
-	var containerWidth = Math.floor( ($(window).width() )/ 214 ) * 214;
-	var dbFetchsHandle              = document.getElementById("dbFetches");
-	dbFetchsHandle.style.width      = containerWidth+"px" ;
-	dbFetchsHandle.style.marginLeft = (($(window).width() - containerWidth ))/2 + "px";
-	document.getElementById("dbFetches").innerHTML = "";
-	
-	$.ajax
-	(
-		{
-		  method: "POST",
-		  url: "process.php",
-		  data: { action: "getTruths" }
-		}
-	).done(function( msg )
-		{
-		  // Stores value in ajaxResult.
-		  //alert(msg);
-		  eval( msg );
-		  
-		  savedAjaxResult = ajaxResult;
-		  
-		  displayTexts( savedAjaxResult )
-		  
-		}
-	);
-	
-	function displayTexts( savedAjaxResult )
-	{
-		for( var i = 0; i < savedAjaxResult.length; i++)
-		{
-			var tmpDiv = document.createElement("div");
-			tmpDiv.setAttribute("class","dbFetch");
-			//alert( savedAjaxResult[i].replace("&amp;quot;","'"));
-			tmpDiv.innerHTML = savedAjaxResult[i];
-			dbFetches.push( tmpDiv );
-			document.getElementById("dbFetches").appendChild( tmpDiv );
-		
-			
-		}
-	}
-}
-
-callChangeUpColor();
-
-defaultColorChangeHandle = setInterval( callChangeUpColor, 50);
-getTruths();
-setInterval( changeUpTextColors, 50 );
-
-
-
-</script>
 
 </body>
 </html>
